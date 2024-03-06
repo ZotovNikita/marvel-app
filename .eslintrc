@@ -41,6 +41,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "import/no-extraneous-dependencies": "off",
+    "prettier/prettier": "off",
     "react/jsx-indent-props": [2, 2],
     "react/jsx-closing-bracket-location": [2, "tag-aligned"],
     "@typescript-eslint/no-inferrable-types": "off",
