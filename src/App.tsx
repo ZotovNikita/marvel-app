@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
+import SearchComponent from './components/SearchContainer/SearchContainer';
 
 function App(): JSX.Element {
   return (
@@ -13,6 +14,7 @@ function App(): JSX.Element {
             { label: 'Сomics', link: '/comics' }
           ]}
         />
+        <SearchComponent onSearch={(query) => console.log('Search:', query)} count='1562'/>
       </div>
     </>
   );
