@@ -21,6 +21,7 @@ function App(): JSX.Element {
           onSearch={(query) => console.log('Search:', query)}
           count="1562"
         />
+        <hr className="hr-line"/>
         <CharacterList characters={characters} />
         <Footer />
       </div>

@@ -10,3 +10,10 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
+.hr-line {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-left: 40px;
+  margin-right: 40px;
+}
