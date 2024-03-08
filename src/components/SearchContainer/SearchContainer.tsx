@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import './SearchContainer.css';
-
-interface SearchProps {
-  onSearch: (query: string) => void;
-  count: string; 
-}
+import { SearchProps } from '../../types/SearchProps';
 
 const SearchComponent: React.FC<SearchProps> = ({ onSearch, count }) => {
   const [query, setQuery] = useState('');
@@ -15,7 +11,9 @@ const SearchComponent: React.FC<SearchProps> = ({ onSearch, count }) => {
 
   return (
     <div className="search-container">
-      <h1 className="search-title">Characters <span className="count">({count})</span></h1>
+      <h1 className="search-title">
+        Characters <span className="count">({count})</span>
+      </h1>
       <input
         type="text"
         value={query}
@@ -23,11 +21,7 @@ const SearchComponent: React.FC<SearchProps> = ({ onSearch, count }) => {
         placeholder="Search for Characters by Name"
         className="search-input"
       />
-      <button
-        type="button" 
-        onClick={handleSearch}
-        className="search-button"
-      >
+      <button type="button" onClick={handleSearch} className="search-button">
         SEARCH
       </button>
     </div>

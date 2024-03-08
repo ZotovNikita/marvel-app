@@ -1,20 +1,11 @@
 import React from 'react';
-import CharacterCard from '../CharacterCard/CharacterCard'; 
-import './CharacterList.css'; 
+import CharacterCard from '../CharacterCard/CharacterCard';
+import './CharacterList.css';
+import { Character } from '../../types/Character';
 
-export interface Character {
-  id: number;
-  name: string;
-  description: string;
-  imageUrl: string;
-  link: { [id: number]: string };
-}
-
-export interface CharacterListProps {
-  characters: Character[]; 
-}
-
-const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
+const CharacterList: React.FC<{ characters: Character[] }> = ({
+  characters
+}) => {
   return (
     <div className="character-list">
       {characters.map((character) => (
