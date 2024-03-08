@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import SearchComponent from './components/SearchContainer/SearchContainer';
 import CharacterList from './components/CharacterList/CharacterList';
 import {characters} from './data/heroes';
+import Footer from './components/Footer/Footer';
 
 function App(): JSX.Element {
   return (
@@ -21,6 +22,7 @@ function App(): JSX.Element {
           count="1562"
         />
         <CharacterList characters={characters} />
+        <Footer />
       </div>
     </>
   );

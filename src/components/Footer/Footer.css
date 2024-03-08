@@ -1,0 +1,35 @@
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 40px);
+  height: 70px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: left;
+}
+
+.footer-link {
+  color: #fff;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.footer-text {
+  color: #fff;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.footer-logo {
+  margin-top: 0;
+  width: 80px;
+  height: auto;
+}
