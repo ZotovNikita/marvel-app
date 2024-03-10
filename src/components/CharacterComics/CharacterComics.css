@@ -38,13 +38,6 @@
   text-decoration: none;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
 .details-container {
   display: flex;
   flex-direction: row;
@@ -54,4 +47,9 @@
 
 .details-container > * {
   margin-right: 200px;
+}
+
+a {
+  text-decoration: none;
+  line-height: 1.5;
 }

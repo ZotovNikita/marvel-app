@@ -16,9 +16,9 @@ const CharacterComics: FC<{ character: Character }> = ({ character }) => (
       </div>
       <div className="comics-links">
         <h2 className="title">Comics</h2>
-        {Object.entries(character.link).map(([id, url]) => (
-          <a key={id} href={url} target="_blank" rel="noopener noreferrer">
-            Comic #{id}
+        {Object.entries(character.link).map(([id, title]) => (
+          <a key={id} href={title} target="_blank" rel="noopener noreferrer">
+            {title}
           </a>
         ))}
       </div>
