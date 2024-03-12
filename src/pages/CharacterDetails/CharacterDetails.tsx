@@ -4,7 +4,6 @@ import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import CharacterComics from 'components/CharacterComics/CharacterComics';
 import { characters } from 'data/heroes';
-import './CharacterDetails.css';
 
 function CharacterDetails(): JSX.Element {
   const { id } = useParams();
