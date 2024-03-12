@@ -1,0 +1,9 @@
+.comics-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.comics-image {
+  margin-top: 60px;
+}

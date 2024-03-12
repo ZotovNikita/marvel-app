@@ -20,6 +20,10 @@ const routes: RouteObject.RouteObject[] = [
   {
     path: '/character-details/:id', 
     element: <CharacterDetails />
+  },
+  {
+    path: '/comics/:id', 
+    element: <Comics />
   }
 ];
 

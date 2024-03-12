@@ -1,0 +1,19 @@
+.comics-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-right: 16px;
+  margin-left: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.comics-list > * {
+  width: 260px;
+  height: 320px;
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

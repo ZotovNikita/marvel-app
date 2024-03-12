@@ -1,11 +1,17 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
-import ComicsList from 'components/ComicsList/ComicsList';
+import ReadComics from 'components/ReadComics/ReadComics';
 import { comics } from 'data/comics';
-import './Comics.css'; 
 
-function Comics(): JSX.Element {
+function ComicsDetails(): JSX.Element {
+  const { id } = useParams();
+
+  const selectedComics = comics.find(
+    (comic) => comic.id === Number(id)
+  );
+
   return (
     <div className="container">
       <Header
@@ -15,10 +21,14 @@ function Comics(): JSX.Element {
           { label: 'Сomics', link: '/comics' }
         ]}
       />
-      <ComicsList comics={comics} />
+      {selectedComics ? (
+        <ReadComics comics={selectedComics} />
+      ) : (
+        <p>Not found</p>
+      )}
       <Footer />
     </div>
   );
 }
 
-export default Comics;
+export default ComicsDetails;
