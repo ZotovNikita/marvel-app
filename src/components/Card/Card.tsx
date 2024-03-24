@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Character } from '../../types/Character';
+import { Item } from '../../types/Item';
 import './Card.css';
 
-const Card: React.FC<{ item: Character; baseRoot: string }> = ({
+const Card: React.FC<{ item: Item; baseRoot: string }> = ({
   item,
   baseRoot
 }) => {
@@ -19,7 +19,7 @@ const Card: React.FC<{ item: Character; baseRoot: string }> = ({
   return (
     <Link className="card" to={`/${baseRoot}-details/${item.id}`}>
       <img
-        src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+        src={`${item.imageUrl}`}
         alt={item.name}
       />
       <div className="item-details">

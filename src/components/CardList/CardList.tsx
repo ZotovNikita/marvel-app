@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from '../Card/Card';
 import './CardList.css';
-import { Character } from '../../types/Character';
+import { Item } from '../../types/Item';
 
-const CardList: React.FC<{ items: Character[]; baseRoot: string }> = ({
+const CardList: React.FC<{ items: Item[]; baseRoot: string }> = ({
   items,
   baseRoot
 }) => {

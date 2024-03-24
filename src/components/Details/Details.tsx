@@ -17,9 +17,9 @@ const Details: FC<{ item: Item; title: string; baseRoot: string }> = ({
       </div>
       <div className="details-links">
         <h2 className="details-title">{title}</h2>
-        {Object.entries(item.link).map(([id, linkTitle]) => (
+        {/* {Object.entries(item.link).map(([id, linkTitle]) => (
           <Link to={`/${baseRoot}-details/${id}`}>{linkTitle}</Link>
-        ))}
+        ))} */}
       </div>
     </div>
   </div>

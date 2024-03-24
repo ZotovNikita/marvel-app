@@ -3,10 +3,10 @@ import SearchComponent from 'components/SearchContainer/SearchContainer';
 import CardList from 'components/CardList/CardList';
 import { getTotalCharacters } from 'api/GetTotalCharacters';
 import { getCharacters } from '../api/GetCharacters';
-import { Character } from '../types/Character';
+import { Item } from '../types/Item';
 
 function Characters(): JSX.Element {
-  const [characterList, setCharacterList] = useState<Character[]>([]);
+  const [characterList, setCharacterList] = useState<Item[]>([]);
   const [totalNumber, setTotal] = useState<number>(0);
 
   useEffect(() => {
