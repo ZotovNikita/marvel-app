@@ -20,3 +20,9 @@ body {
   min-height: 100vh;
 }
 
+.hr-line {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-left: 40px;
+  margin-right: 40px;
+}

@@ -5,6 +5,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
   text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .card img {
