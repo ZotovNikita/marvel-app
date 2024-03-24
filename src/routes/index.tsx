@@ -1,9 +1,9 @@
 import React from 'react';
 import RouteObject from 'react-router-dom';
-import Characters from '../pages/Characters/Characters';
-import Comics from '../pages/Comics/Comics';
-import CharacterDetails from '../pages/CharacterDetails/CharacterDetails'
-import ComicsDetails from '../pages/ComicsDetails/ComicsDetails';
+import Characters from './Characters';
+import Comics from './Comics';
+import CharacterDetails from './CharacterDetails'
+import ComicsDetails from './ComicsDetails';
 
 const routes: RouteObject.RouteObject[] = [
   {
