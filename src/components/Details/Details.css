@@ -1,37 +1,38 @@
-.character-container {
+.details-container {
   display: flex;
   flex-direction: column;
   align-items: start;
+  width: 100%;
+  margin-top: 0;
 }
 
-.character-image {
-  margin-top: 60px;
-  width: 100vw;
-  height: 25vw;
+.details-container img {
+  width: 100%;
+  height: 30vw;
   object-fit: cover;
-  object-position: 10% 30%;
-  margin-bottom: 10px;
+  object-position: 60% 40%;
+  margin-top: 0;
 }
 
-.character-info {
+.details-info {
   text-align: left;
   margin-left: 26px;
   max-width: 600px;
 }
 
-.character-name {
+.details-name {
   margin-top: 0;
   font-size: 2rem;
   font-weight: 700;
 }
 
-.character-description {
+.details-description {
   margin-top: 10px;
   color: black;
   font-size: 1.4rem;
 }
 
-.comics-links {
+.details-links {
   position: absolute;
   left: 45%;
   display: flex;
@@ -39,16 +40,17 @@
   align-items: flex-start;
 }
 
-.details-container {
+.info-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+  margin-bottom: 150px;
 }
 
-.details-container > * {
-  margin-right: 200px;
+.details-title {
+  margin-top: 40px;
 }
 
 a {

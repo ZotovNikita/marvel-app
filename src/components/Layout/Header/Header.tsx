@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import { NavigationItem } from '../../types/NavigationItem';
+import { NavigationItem } from '../../../types/NavigationItem';
 
 const Header: React.FC<{
   logoPath: string;

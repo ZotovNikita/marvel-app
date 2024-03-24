@@ -8,15 +8,15 @@ interface DetailsProps {
 }
 
 const Details: FC<DetailsProps> = ({ item, title }) => (
-  <div className="character-container">
-    <img src={item.imageUrl} alt={item.name} className="character-image" />
-    <div className="details-container">
-      <div className="character-info">
-        <div className="character-name">{item.name}</div>
-        <div className="character-description">{item.description}</div>
+  <div className="details-container">
+    <img src={item.imageUrl} alt={item.name}/>
+    <div className="info-container">
+      <div className="details-info">
+        <div className="details-name">{item.name}</div>
+        <div className="details-description">{item.description}</div>
       </div>
-      <div className="comics-links">
-        <h2 className="title">{title}</h2>
+      <div className="details-links">
+        <h2 className="details-title">{title}</h2>
         {Object.entries(item.link).map(([id, linkTitle]) => (
           <a
             key={id}
