@@ -6,17 +6,17 @@ import { comics } from 'data/comics';
 function Comics(): JSX.Element {
   return (
     <div>
-      <SearchComponent
+      {/* <SearchComponent
         onSearch={(query) => console.log('Search:', query)}
         count={comics.length.toString()}
         placeholder="Search for Comics by Name"
         title="Comics"
         searchButtonLabel="SEARCH"
-      />
+      /> */}
 
       <hr className="hr-line" />
 
-      <CardList items={comics} baseRoot="comics" />
+      {/* <CardList items={comics} baseRoot="comics" /> */}
     </div>
   );
 }

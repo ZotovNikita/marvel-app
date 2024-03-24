@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchComponent from 'components/SearchContainer/SearchContainer';
 import CardList from 'components/CardList/CardList';
-import { characters } from 'data/heroes';
+import { getTotalCharacters } from 'api/GetTotalCharacters';
+import { getCharacters } from '../api/GetCharacters';
+import { Character } from '../types/Character';
 
 function Characters(): JSX.Element {
+  const [characterList, setCharacterList] = useState<Character[]>([]);
+  const [totalNumber, setTotal] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchTotal = async () => {
+      try {
+        const total = await getTotalCharacters();
+        setTotal(total);
+      } catch (error) {
+        console.error('Error fetching total:', error);
+      }
+    };
+
+    fetchTotal();
+  }, []);
+
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      try {
+        const offset = 0;
+        const characters = await getCharacters(offset);
+        setCharacterList(characters);
+      } catch (error) {
+        console.error('Error fetching characters:', error);
+      }
+    };
+
+    fetchCharacters();
+  }, []);
+
   return (
     <>
       <div>
         <SearchComponent
           onSearch={(query) => console.log('Search:', query)}
-          count={characters.length.toString()}
+          count={totalNumber} 
           placeholder="Search for Characters by Name"
           title="Characters"
           searchButtonLabel="SEARCH"
@@ -17,7 +49,7 @@ function Characters(): JSX.Element {
 
         <hr className="hr-line" />
 
-        <CardList items={characters} baseRoot="character" />
+        <CardList items={characterList} baseRoot="character" />
       </div>
     </>
   );
