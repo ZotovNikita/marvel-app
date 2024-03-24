@@ -1,4 +1,4 @@
-.character-list {
+.card-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -9,7 +9,7 @@
   padding-right: 16px;
 }
 
-.character-list > * {
+.card-list > * {
   width: 260px;
   height: 275px;
   margin-right: 3px;

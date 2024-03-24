@@ -1,7 +1,7 @@
-export interface Character {
+export interface Item {
   id: number;
+  imageUrl: string;
   name: string;
   description: string;
-  imageUrl: string;
   link: { [id: number]: string };
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
-import ComicsList from 'components/ComicsList/ComicsList';
+import CardList from 'components/CardList/CardList';
+import SearchComponent from 'components/SearchContainer/SearchContainer';
 import { comics } from 'data/comics';
-import './Comics.css'; 
+import './Comics.css';
 
 function Comics(): JSX.Element {
   return (
@@ -15,7 +16,14 @@ function Comics(): JSX.Element {
           { label: 'Сomics', link: '/comics' }
         ]}
       />
-      <ComicsList comics={comics} />
+      <SearchComponent
+        onSearch={(query) => console.log('Search:', query)}
+        count={comics.length.toString()}
+        placeholder="Search for Comics by Name"
+        title="Comics"
+        searchButtonLabel="SEARCH"
+      />
+      <CardList items={comics} baseRoot="comics" />
       <Footer />
     </div>
   );

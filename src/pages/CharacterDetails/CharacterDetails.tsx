@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
-import CharacterComics from 'components/CharacterComics/CharacterComics';
+import Details from 'components/Details/Details';
 import { characters } from 'data/heroes';
 
 function CharacterDetails(): JSX.Element {
@@ -22,7 +22,7 @@ function CharacterDetails(): JSX.Element {
         ]}
       />
       {selectedCharacter ? (
-        <CharacterComics character={selectedCharacter} />
+        <Details item={selectedCharacter} title='Comics'/>
       ) : (
         <p>Not found</p>
       )}

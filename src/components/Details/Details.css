@@ -7,9 +7,10 @@
 .character-image {
   margin-top: 60px;
   width: 100vw;
-  height: 450px;
+  height: 25vw;
   object-fit: cover;
   object-position: 10% 30%;
+  margin-bottom: 10px;
 }
 
 .character-info {
@@ -31,11 +32,11 @@
 }
 
 .comics-links {
+  position: absolute;
+  left: 45%;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  margin: 0 auto;
-  text-decoration: none;
+  align-items: flex-start;
 }
 
 .details-container {
@@ -43,6 +44,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .details-container > * {

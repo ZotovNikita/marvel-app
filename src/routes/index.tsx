@@ -3,6 +3,7 @@ import RouteObject from 'react-router-dom';
 import Characters from '../pages/Characters/Characters';
 import Comics from '../pages/Comics/Comics';
 import CharacterDetails from '../pages/CharacterDetails/CharacterDetails'
+import ComicsDetails from '../pages/ComicsDetails/ComicsDetails';
 
 const routes: RouteObject.RouteObject[] = [
   {
@@ -24,7 +25,11 @@ const routes: RouteObject.RouteObject[] = [
   {
     path: '/comics/:id', 
     element: <Comics />
-  }
+  },
+  {
+    path: '/comics-details/:id', 
+    element: <ComicsDetails />
+  },
 ];
 
 export default routes;

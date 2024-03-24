@@ -1,6 +1,6 @@
-import { Character } from '../types/Character';
+import { Item } from '../types/Item';
 
-export const characters: Character[] = [
+export const characters: Item[] = [
   {
     id: 1,
     name: 'A',

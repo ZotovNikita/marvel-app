@@ -2,7 +2,7 @@ import React from 'react';
 import './Characters.css';
 import Header from 'components/Header/Header';
 import SearchComponent from 'components/SearchContainer/SearchContainer';
-import CharacterList from 'components/CharacterList/CharacterList';
+import CardList from 'components/CardList/CardList';
 import { characters } from 'data/heroes';
 import Footer from 'components/Footer/Footer';
 
@@ -19,10 +19,14 @@ function Characters(): JSX.Element {
         />
         <SearchComponent
           onSearch={(query) => console.log('Search:', query)}
-          count="1562"
+          count={characters.length.toString()}
+          placeholder="Search for Characters by Name"
+          title="Characters"
+          searchButtonLabel="SEARCH"
         />
+        
         <hr className="hr-line" />
-        <CharacterList characters={characters} />
+        <CardList items={characters} baseRoot='character'/>
         <Footer />
       </div>
     </>
