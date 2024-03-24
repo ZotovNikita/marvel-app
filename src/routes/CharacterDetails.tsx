@@ -13,7 +13,7 @@ function CharacterDetails(): JSX.Element {
   return (
     <div>
       {selectedCharacter ? (
-        <Details item={selectedCharacter} title="Comics" />
+        <Details item={selectedCharacter} title="Comics" baseRoot="comics" />
       ) : (
         <p>Not found</p>
       )}

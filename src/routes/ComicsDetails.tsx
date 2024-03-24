@@ -11,7 +11,11 @@ function ComicsDetails(): JSX.Element {
   return (
     <div>
       {selectedComics ? (
-        <Details item={selectedComics} title="Characters" />
+        <Details
+          item={selectedComics}
+          title="Characters"
+          baseRoot="character"
+        />
       ) : (
         <p>Not found</p>
       )}

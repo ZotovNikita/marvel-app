@@ -17,7 +17,7 @@ export const characters: Item[] = [
   },
 
   {
-    id: 1,
+    id: 2,
     name: 'Black knight',
     description:
       'Burdened by a heavy past and wielding the Ebony Blade, Dane Whitman forges a new legacy as the Black Knight.',

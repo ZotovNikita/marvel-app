@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import './Details.css';
+import { Link } from 'react-router-dom';
 import { Item } from '../../types/Item';
 
-interface DetailsProps {
-  item: Item;
-  title: string;
-}
-
-const Details: FC<DetailsProps> = ({ item, title }) => (
+const Details: FC<{ item: Item; title: string; baseRoot: string }> = ({
+  item,
+  title,
+  baseRoot
+}) => (
   <div className="details-container">
-    <img src={item.imageUrl} alt={item.name}/>
+    <img src={item.imageUrl} alt={item.name} />
     <div className="info-container">
       <div className="details-info">
         <div className="details-name">{item.name}</div>
@@ -18,14 +18,7 @@ const Details: FC<DetailsProps> = ({ item, title }) => (
       <div className="details-links">
         <h2 className="details-title">{title}</h2>
         {Object.entries(item.link).map(([id, linkTitle]) => (
-          <a
-            key={id}
-            href={linkTitle}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {linkTitle}
-          </a>
+          <Link to={`/${baseRoot}-details/${id}`}>{linkTitle}</Link>
         ))}
       </div>
     </div>
