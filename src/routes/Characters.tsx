@@ -48,7 +48,7 @@ function Characters(): JSX.Element {
 
         <hr className="hr-line" />
 
-        <CardList items={characterList} baseRoot="character" />
+        <CardList items={characterList} baseRoot="character" noDescriptionText="No description provided"/>
       </div>
     </>
   );

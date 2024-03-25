@@ -46,7 +46,7 @@ function ComicsPage(): JSX.Element {
 
       <hr className="hr-line" />
 
-      <CardList items={comicsList} baseRoot="comics" />
+      <CardList items={comicsList} baseRoot="comics" noDescriptionText=""/>
     </div>
   );
 }
