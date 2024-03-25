@@ -1,46 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import SearchComponent from 'components/SearchContainer/SearchContainer';
 import CardList from 'components/CardList/CardList';
-import { getTotalCharacters, getCharacters} from '../api/GetCharacters';
-import { Item } from '../types/Item';
+import charactersStore from '../stores/CharactersStore';
 
-function Characters(): JSX.Element {
-  const [characterList, setCharacterList] = useState<Item[]>([]);
-  const [totalNumber, setTotal] = useState<number>(0);
+const Characters = observer(() => {
+  const { characterList, totalNumber, fetchTotalCharacters, fetchCharacters } = charactersStore;
 
   useEffect(() => {
-    const fetchTotal = async () => {
-      try {
-        const total = await getTotalCharacters();
-        setTotal(total);
-      } catch (error) {
-        console.error('Error fetching total:', error);
-      }
-    };
-
-    fetchTotal();
-  }, []);
-
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      try {
-        const offset = 0;
-        const characters = await getCharacters(offset);
-        setCharacterList(characters);
-      } catch (error) {
-        console.error('Error fetching characters:', error);
-      }
-    };
-
+    fetchTotalCharacters();
     fetchCharacters();
-  }, []);
+  }, [fetchTotalCharacters, fetchCharacters]);
+
+  const handleSearch = (query: string) => {
+    console.log('Search:', query);
+  };
 
   return (
     <>
       <div>
         <SearchComponent
-          onSearch={(query) => console.log('Search:', query)}
-          count={totalNumber} 
+          onSearch={handleSearch}
+          count={totalNumber}
           placeholder="Search for Characters by Name"
           title="Characters"
           searchButtonLabel="SEARCH"
@@ -48,10 +29,10 @@ function Characters(): JSX.Element {
 
         <hr className="hr-line" />
 
-        <CardList items={characterList} baseRoot="character" noDescriptionText="No description provided"/>
+        <CardList items={characterList} baseRoot="character" noDescriptionText="No description provided" />
       </div>
     </>
   );
-}
+});
 
 export default Characters;

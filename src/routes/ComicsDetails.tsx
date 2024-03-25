@@ -1,46 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
 import Details from 'components/Details/Details';
-import { getComicsByID, getComicsCharacters } from 'api/GetComics';
-import { Item } from '../types/Item';
+import comicsDetailsStore from '../stores/ComicsDetailsStore';
 
-function ComicsDetails(): JSX.Element {
+const ComicsDetails = observer(() => {
   const { id } = useParams<{ id: string }>();
-
-  const [comicsDetails, setComicsDetails] = useState<Item[]>([]);
-  const [comicsCharacters, setComicsCharacters] = useState<{
-    [id: number]: string;
-  }>({});
+  const { comicsDetails, comicsCharacters, fetchComicsDetails, fetchComicsCharacters } = comicsDetailsStore;
 
   useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const details = await getComicsByID(Number(id));
-        setComicsDetails(details);
-      } catch (error) {
-        console.error('Error fetching details:', error);
-      }
-    };
+    fetchComicsDetails(Number(id));
+    fetchComicsCharacters(Number(id));
+  }, [fetchComicsDetails, fetchComicsCharacters, id]);
 
-    fetchDetails();
-  }, [id]);
-
-  useEffect(() => {
-    const fetchCharacterComics = async () => {
-      try {
-        const comics = await getComicsCharacters(Number(id));
-        setComicsCharacters(comics);
-      } catch (error) {
-        console.error('Error fetching comics:', error);
-      }
-    };
-
-    fetchCharacterComics();
-  }, [id]);
-
-  const selectedComics = comicsDetails.find(
-    (details) => details.id === Number(id)
-  );
+  const selectedComics = comicsDetails.find((details) => details.id === Number(id));
 
   return (
     <div>
@@ -56,6 +29,6 @@ function ComicsDetails(): JSX.Element {
       )}
     </div>
   );
-}
+});
 
 export default ComicsDetails;

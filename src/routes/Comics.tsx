@@ -1,43 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import CardList from 'components/CardList/CardList';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import SearchComponent from 'components/SearchContainer/SearchContainer';
-import { getTotalComics, getComics } from 'api/GetComics';
-import { Item } from 'types/Item';
+import CardList from 'components/CardList/CardList';
+import comicsPageStore from '../stores/ComicsPageStore';
 
-function ComicsPage(): JSX.Element {
-  const [comicsList, setComicsList] = useState<Item[]>([]);
-  const [totalNumber, setTotal] = useState<number>(0);
-
-  useEffect(() => {
-    const fetchTotal = async () => {
-      try {
-        const total = await getTotalComics();
-        setTotal(total);
-      } catch (error) {
-        console.error('Error fetching total:', error);
-      }
-    };
-
-    fetchTotal();
-  }, []);
+const ComicsPage = observer(() => {
+  const { comicsList, totalNumber, fetchTotalComics, fetchComics } = comicsPageStore;
 
   useEffect(() => {
-    const fetchComics = async () => {
-      try {
-        const offset = 0;
-        const comics = await getComics(offset);
-        setComicsList(comics);
-      } catch (error) {
-        console.error('Error fetching comics:', error);
-      }
-    };
-
+    fetchTotalComics();
     fetchComics();
-  }, []);
+  }, [fetchTotalComics, fetchComics]);
+
+  const handleSearch = (query: string) => {
+    console.log('Search:', query);
+  };
+
   return (
     <div>
       <SearchComponent
-        onSearch={(query) => console.log('Search:', query)}
+        onSearch={handleSearch}
         count={totalNumber}
         placeholder="Search for Comics by Title"
         title="Comics"
@@ -46,9 +28,9 @@ function ComicsPage(): JSX.Element {
 
       <hr className="hr-line" />
 
-      <CardList items={comicsList} baseRoot="comics" noDescriptionText=""/>
+      <CardList items={comicsList} baseRoot="comics" noDescriptionText="" />
     </div>
   );
-}
+});
 
 export default ComicsPage;
