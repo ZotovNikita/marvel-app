@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: start;
   margin-top: 0;
+  margin-bottom: 300px;
 }
 
 .image-container {
@@ -15,7 +16,7 @@
   object-fit: cover;
   object-position: 60% 40%;
   margin-top: 0;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .details-info {
