@@ -36,7 +36,7 @@ export const getComicsByID = async (id: number): Promise<Item[]> => {
       params: { id }
     }
   );
-  return response.data.data.results[0].map((comics: Comics) => ({
+  return response.data.data.results.map((comics: Comics) => ({
     id: comics.id,
     imageUrl: `${comics.thumbnail.path}.${comics.thumbnail.extension}`,
     name: comics.title,
@@ -51,7 +51,7 @@ export const getComicsCharacters = async (id: number): Promise<Item[]> => {
       params: { id }
     }
   );
-  return response.data.data.results[0].map((charcter: Character) => ({
+  return response.data.data.results.map((charcter: Character) => ({
     id: charcter.id,
     imageUrl: `${charcter.thumbnail.path}.${charcter.thumbnail.extension}`,
     name: charcter.name,

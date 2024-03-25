@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SearchComponent from 'components/SearchContainer/SearchContainer';
 import CardList from 'components/CardList/CardList';
-import { getTotalCharacters } from 'api/GetTotalCharacters';
-import { getCharacters } from '../api/GetCharacters';
+import { getTotalCharacters, getCharacters} from '../api/GetCharacters';
 import { Item } from '../types/Item';
 
 function Characters(): JSX.Element {

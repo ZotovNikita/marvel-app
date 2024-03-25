@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CardList from 'components/CardList/CardList';
 import SearchComponent from 'components/SearchContainer/SearchContainer';
-import { getTotalComics } from 'api/GetTotalComics';
-import { getComics } from 'api/GetComics';
+import { getTotalComics, getComics } from 'api/GetComics';
 import { Item } from 'types/Item';
 
 function ComicsPage(): JSX.Element {

@@ -36,7 +36,7 @@ export const getCharacterByID = async (id: number): Promise<Item[]> => {
       params: { id }
     }
   );
-  return response.data.data.results[0].map((character: Character) => ({
+  return response.data.data.results.map((character: Character) => ({
     id: character.id,
     imageUrl: `${character.thumbnail.path}.${character.thumbnail.extension}`,
     name: character.name,
@@ -44,17 +44,25 @@ export const getCharacterByID = async (id: number): Promise<Item[]> => {
   }));
 };
 
-export const getCharacterComics = async (id: number): Promise<Item[]> => {
+export const getCharacterComics = async (
+  characterId: number
+): Promise<{ [id: number]: string }> => {
   const response = await axios.get(
-    `/characters/${id}/comics?ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a`,
+    `/characters/${characterId}/comics?ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a`,
     {
-      params: { id }
+      params: { characterId }
     }
   );
-  return response.data.data.results[0].map((comics: Comics) => ({
-    id: comics.id,
-    imageUrl: `${comics.thumbnail.path}.${comics.thumbnail.extension}`,
-    name: comics.title,
-    description: comics.description
-  }));
+  return response.data.data.results
+    .map((comics: Comics) => ({
+      id: comics.id,
+      value: comics.title
+    }))
+    .reduce(
+      (acc: { [id: number]: string }, curr: { id: number; value: string }) => {
+        acc[curr.id] = curr.value;
+        return acc;
+      },
+      {}
+    );
 };
