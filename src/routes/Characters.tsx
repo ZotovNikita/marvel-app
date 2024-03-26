@@ -11,7 +11,7 @@ const Characters = observer(() => {
   const maxLength = 7;
   const numItems = 12
 
-  const [nameStartsWith, setNameStartsWith] = useState('');
+  const [nameStartsWith] = useState('');
 
   useEffect(() => {
     

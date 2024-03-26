@@ -1,4 +1,5 @@
 import axios from 'api/helpers/axios';
+import envs from 'config/environments';
 import { Item } from 'types/Item';
 import { Character } from '../types/Character';
 import { Comics } from '../types/Comics';
@@ -6,7 +7,7 @@ import { CharactersResponse } from '../types/CharactersResponse';
 
 export const getTotalCharacters = async (): Promise<number> => {
   const response = await axios.get<CharactersResponse>(
-    '/characters?ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a'
+    `/characters?ts=${envs.ts}&apikey=${envs.apiKey}&hash=${envs.hash}`
   );
   return response.data.data.total;
 };
@@ -17,7 +18,7 @@ export const getCharacters = async (
   nameStartsWith: string | null = null
 ): Promise<Character[]> => {
   const response = await axios.get<CharactersResponse>(
-    '/characters?ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a',
+    `/characters?ts=${envs.ts}&apikey=${envs.apiKey}&hash=${envs.hash}`,
     {
       params: { offset, limit, nameStartsWith }
     }
@@ -27,7 +28,7 @@ export const getCharacters = async (
 
 export const getCharacterByID = async (id: number): Promise<Item[]> => {
   const response = await axios.get(
-    `/characters/${id}?ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a`,
+    `/characters/${id}?ts=${envs.ts}&apikey=${envs.apiKey}&hash=${envs.hash}`,
     {
       params: { id }
     }
@@ -44,7 +45,7 @@ export const getCharacterComics = async (
   characterId: number
 ): Promise<{ [id: number]: string }> => {
   const response = await axios.get(
-    `/characters/${characterId}/comics?ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a`,
+    `/characters/${characterId}/comics?ts=${envs.ts}&apikey=${envs.apiKey}&hash=${envs.hash}`,
     {
       params: { characterId }
     }
