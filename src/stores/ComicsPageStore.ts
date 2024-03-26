@@ -26,9 +26,9 @@ class ComicsPageStore {
   };
 
   @action
-  fetchComics = async (): Promise<void> => {
+  fetchComics = async (page: number): Promise<void> =>{
     try {
-      const offset = 0;
+      const offset = (page - 1) * 12;
       const comics = await getComics(offset);
       runInAction(() => {
         this.comicsList = comics;

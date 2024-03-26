@@ -15,23 +15,24 @@ const Card: React.FC<CardProps> = ({ item, baseRoot, noDescriptionText }) => {
   const MAX_DESCRIPTION_LENGTH = 70;
 
   let truncatedDescription = description;
-  if (truncatedDescription.length > MAX_DESCRIPTION_LENGTH) {
+  if (
+    truncatedDescription &&
+    truncatedDescription.length > MAX_DESCRIPTION_LENGTH
+  ) {
     truncatedDescription = `${truncatedDescription.slice(
       0,
       MAX_DESCRIPTION_LENGTH
     )}...`;
   }
 
+  const displayDescription = truncatedDescription || noDescriptionText;
+
   return (
     <Link className="card" to={`/${baseRoot}-details/${item.id}`}>
       <img src={`${item.imageUrl}`} alt={item.name} />
       <div className="item-details">
         <h3>{item.name}</h3>
-        <p>
-          {truncatedDescription !== ''
-            ? truncatedDescription
-            : noDescriptionText}
-        </p>
+        <p>{displayDescription}</p>
       </div>
     </Link>
   );

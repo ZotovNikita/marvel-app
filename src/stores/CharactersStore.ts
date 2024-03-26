@@ -26,9 +26,9 @@ class CharactersStore {
   };
 
   @action
-  fetchCharacters = async (): Promise<void> => {
+  fetchCharacters = async (page: number): Promise<void> => {
     try {
-      const offset = 0;
+      const offset = (page - 1) * 12; 
       const characters = await getCharacters(offset);
       runInAction(() => {
         this.characterList = characters;
@@ -37,6 +37,7 @@ class CharactersStore {
       console.error('Error fetching characters:', error);
     }
   };
+  
 }
 
 const charactersStore = new CharactersStore();
