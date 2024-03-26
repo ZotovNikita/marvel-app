@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
 import Details from 'components/Details/Details';
-import { characters } from 'data/heroes';
+import characterDetailsStore from '../stores/CharacterDetailsStore';
 
-function CharacterDetails(): JSX.Element {
-  const { id } = useParams();
+const CharacterDetails = observer(() => {
+  const { id } = useParams<{ id: string }>();
+  const { characterDetails, characterComics, fetchCharacterDetails, fetchCharacterComics } = characterDetailsStore;
 
-  const selectedCharacter = characters.find(
-    (character) => character.id === Number(id)
-  );
+  useEffect(() => {
+    fetchCharacterDetails(Number(id));
+    fetchCharacterComics(Number(id));
+  }, [fetchCharacterDetails, fetchCharacterComics, id]);
+
+  const selectedCharacter = characterDetails.find((details) => details.id === Number(id));
 
   return (
     <div>
       {selectedCharacter ? (
-        <Details item={selectedCharacter} title="Comics" baseRoot="comics" />
+        <Details
+          item={selectedCharacter}
+          title="Comics"
+          baseRoot="comics"
+          links={characterComics}
+        />
       ) : (
         <p>Not found</p>
       )}
     </div>
   );
-}
+});
 
 export default CharacterDetails;

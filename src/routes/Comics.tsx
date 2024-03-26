@@ -1,24 +1,58 @@
-import React from 'react';
-import CardList from 'components/CardList/CardList';
+import React, { useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import SearchComponent from 'components/SearchContainer/SearchContainer';
-import { comics } from 'data/comics';
+import CardList from 'components/CardList/CardList';
+import Pagination from 'components/Pagination/Pagination';
+import comicsPageStore from '../stores/ComicsPageStore';
 
-function Comics(): JSX.Element {
+const ComicsPage = observer(() => {
+  const { comicsList, totalNumber, fetchTotalComics, fetchComics } =
+    comicsPageStore;
+  const [currentPage, setCurPage] = useState(1);
+  const maxLength = 7;
+  const numItems = 12;
+
+  useEffect(() => {
+    fetchTotalComics();
+    fetchComics(currentPage);
+  }, [fetchTotalComics, fetchComics, currentPage]);
+
+  const handleSearch = (query: string) => {
+    console.log('Search:', query);
+  };
+
+  const handlePageClick = (pageNumber: number) => {
+    setCurPage(pageNumber);
+  };
+
+  const lastPage = Math.ceil(totalNumber / numItems);
+
   return (
-    <div>
-      <SearchComponent
-        onSearch={(query) => console.log('Search:', query)}
-        count={comics.length.toString()}
-        placeholder="Search for Comics by Name"
-        title="Comics"
-        searchButtonLabel="SEARCH"
-      />
+    <>
+      <div>
+        <SearchComponent
+          onSearch={handleSearch}
+          count={totalNumber}
+          placeholder="Search for Comics by Title"
+          title="Comics"
+          searchButtonLabel="SEARCH"
+        />
 
-      <hr className="hr-line" />
+        <hr className="hr-line" />
 
-      <CardList items={comics} baseRoot="comics" />
-    </div>
+        <CardList items={comicsList} baseRoot="comics" noDescriptionText="" />
+
+        <hr className="hr-line" />
+
+        <Pagination
+          currentPage={currentPage}
+          lastPage={lastPage}
+          maxLength={maxLength}
+          handlePageClick={handlePageClick}
+        />
+      </div>
+    </>
   );
-}
+});
 
-export default Comics;
+export default ComicsPage;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import './Layout.css'; 
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -12,7 +13,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           { label: 'Сomics', link: '/comics' }
         ]}
       />
-      {children}
+      <div className="content">{children}</div>
       <Footer />
     </div>
   );

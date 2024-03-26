@@ -3,5 +3,4 @@ export interface Item {
   imageUrl: string;
   name: string;
   description: string;
-  link: { [id: number]: string };
 }

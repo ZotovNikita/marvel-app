@@ -23,10 +23,6 @@ const routes: RouteObject.RouteObject[] = [
     element: <CharacterDetails />
   },
   {
-    path: '/comics/:id', 
-    element: <Comics />
-  },
-  {
     path: '/comics-details/:id', 
     element: <ComicsDetails />
   },
