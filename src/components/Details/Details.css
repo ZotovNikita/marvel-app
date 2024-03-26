@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: start;
   margin-top: 0;
-  margin-bottom: 300px;
 }
 
 .image-container {
@@ -35,21 +34,21 @@
   margin-top: 10px;
   color: black;
   font-size: 1.4rem;
-  max-width: 600px;
+  width: 600px;
 }
 
 .details-links {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
-  margin-left: 45%;
+  margin-left: 10%;
 }
 
 .info-container {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
 }
 
 .details-title {
