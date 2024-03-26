@@ -1,6 +1,7 @@
 import { observable, action, makeObservable, runInAction } from 'mobx';
 import { getTotalCharacters, getCharacters } from '../api/GetCharacters';
 import { Item } from '../types/Item';
+import { Character } from '../types/Character';
 
 class CharactersStore {
   @observable
@@ -31,7 +32,12 @@ class CharactersStore {
       const offset = (page - 1) * 12; 
       const characters = await getCharacters(offset);
       runInAction(() => {
-        this.characterList = characters;
+        this.characterList = characters.map((character: Character) => ({
+          id: character.id,
+          imageUrl: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+          name: character.name,
+          description: character.description
+        }));;
       });
     } catch (error) {
       console.error('Error fetching characters:', error);

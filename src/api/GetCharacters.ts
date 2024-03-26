@@ -13,20 +13,16 @@ export const getTotalCharacters = async (): Promise<number> => {
 
 export const getCharacters = async (
   offset: number = 0,
-  limit: number = 12
-): Promise<Item[]> => {
+  limit: number = 12,
+  nameStartsWith: string | null = null
+): Promise<Character[]> => {
   const response = await axios.get<CharactersResponse>(
     '/characters?ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a',
     {
-      params: { offset, limit }
+      params: { offset, limit, nameStartsWith }
     }
   );
-  return response.data.data.results.map((character: Character) => ({
-    id: character.id,
-    imageUrl: `${character.thumbnail.path}.${character.thumbnail.extension}`,
-    name: character.name,
-    description: character.description
-  }));
+  return response.data.data.results
 };
 
 export const getCharacterByID = async (id: number): Promise<Item[]> => {

@@ -11,10 +11,13 @@ const Characters = observer(() => {
   const maxLength = 7;
   const numItems = 12
 
+  const [nameStartsWith, setNameStartsWith] = useState('');
+
   useEffect(() => {
+    
     fetchTotalCharacters();
     fetchCharacters(currentPage);
-  }, [fetchTotalCharacters, fetchCharacters, currentPage]);
+  }, [fetchTotalCharacters, fetchCharacters, currentPage, nameStartsWith]);
 
   const handleSearch = (query: string) => {
     console.log('Search:', query);

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchContainer.css';
+import useDebounce from 'hooks/useDebounce';
 import { SearchProps } from '../../types/SearchProps';
 
 const SearchComponent: React.FC<SearchProps> = ({
@@ -10,10 +11,15 @@ const SearchComponent: React.FC<SearchProps> = ({
   searchButtonLabel
 }) => {
   const [query, setQuery] = useState('');
+  const debounce = useDebounce(query, 3000);
 
   const handleSearch = () => {
     onSearch(query);
   };
+
+  useEffect(() => {
+    if (query !== '') handleSearch();
+  }, [debounce]);
 
   return (
     <div className="search-container">
